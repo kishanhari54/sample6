@@ -1,0 +1,13 @@
+:root{ 
+--button-primary-color: #DC0032;
+}
+
+.button-primary{
+background-color :var(--button-primary-color) !important;
+font-family: Open Sans;
+font-size: 15px;
+font-weight: 700;
+line-height: 20.43px;
+text-align: center;
+color:white;
+}
