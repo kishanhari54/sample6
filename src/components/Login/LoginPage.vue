@@ -41,10 +41,14 @@
 
 <script setup>
 import { ref } from "vue";
+import { useUserStore } from "../../stores/useUserStore.js";
+const userStore = useUserStore();
+
 const formData = ref({
   email: "",
   password: "",
 });
+//const userStore = useUserStore();
 
 const rules = {
   required: (value) => !!value || "This field is required",
@@ -54,11 +58,14 @@ const rules = {
     (value && value.length >= 6) || "Password must be at least 6 characters",
 };
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
   // Handle form submission, e.g., send data to server
-  console.log(
-    `Email: ${formData.value.email}, Password: ${formData.value.password}`
-  );
+
+  let email = formData.value.email;
+  let password = formData.value.password;
+
+  console.log(`Email: ${email}, Password: ${password}`);
+  await userStore.login({ email, password });
 };
 </script>
 <style scoped>
@@ -75,9 +82,6 @@ const handleSubmit = () => {
   .title {
     display: flex;
     justify-content: center;
-  }
-  button {
-    background: var(--button-primary-color);
   }
 }
 </style>
