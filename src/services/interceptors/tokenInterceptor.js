@@ -1,5 +1,8 @@
+import { useRouter } from "vue-router";
+
 export default {
   install(axiosInstance) {
+    const router = useRouter();
     // Request Interceptor
     axiosInstance.interceptors.request.use(
       (config) => {
@@ -25,6 +28,7 @@ export default {
       },
       (error) => {
         // Handle request error
+        debugger;
         return Promise.reject(error);
       }
     );
@@ -38,6 +42,10 @@ export default {
       (error) => {
         // Handle response error
         // Handle potential token refresh logic here
+        if (error.status == 401) {
+          console.log("UnAuthorized");
+          router.push("/login");
+        }
         return Promise.reject(error);
       }
     );

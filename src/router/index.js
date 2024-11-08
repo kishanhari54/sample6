@@ -26,6 +26,16 @@ const routes = [
         name: "alerts",
         component: () => import("../components/Alerts/AlertsList"),
       },
+      {
+        path: "dashboard",
+        name: "dashboard",
+        component: () => import("../views/DashboardView"),
+      },
+      {
+        path: "masterprocess",
+        name: "masterprocess",
+        component: () => import("../views/MasterProcess"),
+      },
     ],
     meta: { requiresAuth: true },
   },

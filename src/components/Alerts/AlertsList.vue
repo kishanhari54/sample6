@@ -16,7 +16,6 @@
 import { computed, onMounted } from "vue";
 import { VDataTable } from "vuetify/lib/components";
 import { useAlertsDataTableStore } from "../../stores/useAlertsStore";
-
 const dataTableStore = useAlertsDataTableStore();
 
 onMounted(() => {
