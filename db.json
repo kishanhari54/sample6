@@ -1,0 +1,49 @@
+{
+  "plants": [
+    {
+      "id": 1,
+      "name": "Plant A",
+      "description": "Description for Plant A"
+    },
+    {
+      "id": 2,
+      "name": "Plant B",
+      "description": "Description for Plant B"
+    }
+  ],
+
+  "processes": [
+    {
+      "id": 1,
+      "sno": 1,
+      "process": "Grinding",
+      "description": "The grinding process of raw materials.",
+      "isActive": true,
+      "plantId": 1
+    },
+    {
+      "id": 2,
+      "sno": 2,
+      "process": "Packaging",
+      "description": "The packaging process of final products.",
+      "isActive": false,
+      "plantId": 1
+    },
+    {
+      "id": 3,
+      "sno": 1,
+      "process": "Molding",
+      "description": "The molding process of components.",
+      "isActive": true,
+      "plantId": 2
+    },
+    {
+      "id": 4,
+      "sno": 2,
+      "process": "Quality Control",
+      "description": "The quality control checks on products.",
+      "isActive": true,
+      "plantId": 2
+    }
+  ]
+}
