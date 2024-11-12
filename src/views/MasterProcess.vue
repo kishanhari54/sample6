@@ -14,7 +14,7 @@
         <UploadList></UploadList>
       </div>
       <div>
-        <AddProcess></AddProcess>
+        <AddProcess :selectedPlant="selectedPlant"></AddProcess>
       </div>
     </section>
   </section>

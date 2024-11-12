@@ -1,13 +1,22 @@
 <template>
   <v-btn @click="openDialog">Add Process</v-btn>
 
-  <AddProcessPopup v-model="openDialogForm" />
+  <AddProcessPopup
+    v-model="openDialogForm"
+    :selectedPlant="props.selectedPlant"
+  />
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { defineProps, ref } from "vue";
 import AddProcessPopup from "./AddProcessPopup.vue";
 let openDialogForm = ref(false);
+const props = defineProps({
+  selectedPlant: {
+    type: Number,
+    required: true,
+  },
+});
 const openDialog = () => {
   openDialogForm.value = true;
 };

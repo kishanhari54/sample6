@@ -62,8 +62,8 @@
 
 <script setup>
 import { required } from "@/common/forms/formValidations.js"; // Import validation rules
-import { defineEmits, onMounted, onUnmounted, ref } from "vue";
-
+import { defineEmits, defineProps, onMounted, onUnmounted, ref } from "vue";
+import axiosInstance from "../../../services/axiosInstance";
 /*
 // Define props (directly access it instead of destructuring)
 const props = defineProps({
@@ -72,6 +72,11 @@ const props = defineProps({
     required: true,
   },
 }); */
+const props = defineProps({
+  selectedPlant: {
+    type: Number,
+  },
+});
 // Emit event to notify parent when dialog visibility changes
 const emit = defineEmits(["update:modelValue"]);
 
@@ -106,9 +111,22 @@ const closeDialog = () => {
 };
 
 // Submit the form
-const submitForm = () => {
+const submitForm = async () => {
   // Process form submission
   console.log(fields.value);
+  const newProcess = {
+    id: 12,
+    sNo: 1,
+    plantId: props.selectedPlant,
+    process: fields.value.problem,
+    description: fields.value.description,
+    isActive: true,
+  };
+  let response = await axiosInstance.post(
+    "http://localhost:3000/processes",
+    newProcess
+  );
+  console.log(response);
   closeDialog();
 };
 
