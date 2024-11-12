@@ -13,6 +13,7 @@
         item-value="id"
         variant="solo-filled"
         dense
+        clearable
         outlined
         :loading="loading"
         @update:model-value="onPlantSelected"

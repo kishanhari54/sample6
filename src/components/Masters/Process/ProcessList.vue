@@ -95,11 +95,14 @@ watch(
   () => props.selectedPlant,
   (newPlantId) => {
     console.log(newPlantId);
-    if (newPlantId) {
+    fetchProcesses(newPlantId);
+
+    /*if (newPlantId) {
       fetchProcesses(newPlantId);
     } else {
+      
       //processes.value = []; // Clear processes if no plant is selected
-    }
+    } */
   },
   { immediate: true } // Trigger fetchProcesses immediately when component mounts
 );
@@ -136,7 +139,8 @@ const toggleActiveStatus = async (process) => {
 
   try {
     // Construct the URL for the process API
-    const url = `https://my-json-server.typicode.com/kishanhari54/sample6/processes/${process.id}`;
+    //const url = `https://my-json-server.typicode.com/kishanhari54/sample6/processes/${process.id}`;
+    const url = `http://localhost:3000/processes/${process.id}`;
 
     // Send the PATCH request to update the process status
     const response = await axios.patch(
@@ -150,7 +154,7 @@ const toggleActiveStatus = async (process) => {
         },
       }
     );
-    process = response.data;
+    process.isActive = response.data.isActive;
     console.log("Status updated successfully:", response.data);
   } catch (error) {
     // If the request fails, revert the local state to the previous value

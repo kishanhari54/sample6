@@ -1,35 +1,34 @@
 {
   "plants": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Plant A",
       "description": "Description for Plant A"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Plant B",
       "description": "Description for Plant B"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Plant C",
       "description": "Description for Plant C"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Plant D",
       "description": "Description for Plant D"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Plant E",
       "description": "Description for Plant E"
     }
   ],
-
   "processes": [
     {
-      "id": 1,
+      "id": "1",
       "sno": 1,
       "process": "Grinding",
       "description": "The grinding process of raw materials.",
@@ -37,7 +36,7 @@
       "plantId": 1
     },
     {
-      "id": 2,
+      "id": "2",
       "sno": 2,
       "process": "Packaging",
       "description": "The packaging process of final products.",
@@ -45,7 +44,7 @@
       "plantId": 1
     },
     {
-      "id": 3,
+      "id": "3",
       "sno": 1,
       "process": "Molding",
       "description": "The molding process of components.",
@@ -53,15 +52,15 @@
       "plantId": 2
     },
     {
-      "id": 4,
+      "id": "4",
       "sno": 2,
       "process": "Quality Control",
       "description": "The quality control checks on products.",
-      "isActive": true,
+      "isActive": false,
       "plantId": 2
     },
     {
-      "id": 5,
+      "id": "5",
       "sno": 3,
       "process": "Welding",
       "description": "Welding of metal components.",
@@ -69,7 +68,7 @@
       "plantId": 3
     },
     {
-      "id": 6,
+      "id": "6",
       "sno": 4,
       "process": "Assembly",
       "description": "Assembly of parts into the final product.",
@@ -77,7 +76,7 @@
       "plantId": 3
     },
     {
-      "id": 7,
+      "id": "7",
       "sno": 5,
       "process": "Inspection",
       "description": "Inspection of finished products for defects.",
@@ -85,7 +84,7 @@
       "plantId": 4
     },
     {
-      "id": 8,
+      "id": "8",
       "sno": 6,
       "process": "Packaging",
       "description": "Packaging of the finished product for shipping.",
@@ -93,7 +92,7 @@
       "plantId": 4
     },
     {
-      "id": 9,
+      "id": "9",
       "sno": 7,
       "process": "Finishing",
       "description": "Surface finishing of the product.",
@@ -101,7 +100,7 @@
       "plantId": 5
     },
     {
-      "id": 10,
+      "id": "10",
       "sno": 8,
       "process": "Labeling",
       "description": "Labeling of the packaged product.",
@@ -109,7 +108,7 @@
       "plantId": 5
     },
     {
-      "id": 11,
+      "id": "11",
       "sno": 9,
       "process": "Packing",
       "description": "Final packing of product into boxes.",
