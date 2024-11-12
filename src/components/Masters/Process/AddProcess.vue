@@ -1,14 +1,14 @@
 <template>
   <v-btn @click="openDialog">Add Process</v-btn>
 
-  <!-- Dialog Component -->
-  <AddProcessPopup v-model="addProcessForm" />
+  <AddProcessPopup v-model="openDialogForm" />
 </template>
+
 <script setup>
 import { ref } from "vue";
-import AddProcessPopup from "./AddProcessPopup.vue"; // Adjust the import path accordingly
-let addProcessForm = ref(false);
+import AddProcessPopup from "./AddProcessPopup.vue";
+let openDialogForm = ref(false);
 const openDialog = () => {
-  addProcessForm.value = true;
+  openDialogForm.value = true;
 };
 </script>

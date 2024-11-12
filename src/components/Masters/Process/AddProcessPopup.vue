@@ -6,7 +6,7 @@
       </v-card-title>
 
       <v-card-subtitle>
-        <v-form v-model="valid" ref="form">
+        <v-form v-model="formValid" ref="form">
           <div v-for="(field, index) in fields" :key="index" class="mb-4">
             <!-- Problem Field (Mandatory) -->
             <v-row>
@@ -22,7 +22,7 @@
                   v-model="field.problem"
                   label="Problem"
                   required
-                  :rules="[(value) => !!value || 'Problem is required']"
+                  :rules="[required]"
                 />
               </v-col>
             </v-row>
@@ -51,9 +51,9 @@
       </v-card-subtitle>
 
       <v-card-actions>
-        <v-btn @click="closeDialog" text>Cancel</v-btn>
-        <v-btn @click="submitForm" :disabled="!valid" color="primary"
-          >Submit</v-btn
+        <v-btn @click="closeDialog">Cancel</v-btn>
+        <v-btn @click="submitForm" :disabled="!formValid" color="primary"
+          >Save</v-btn
         >
       </v-card-actions>
     </v-card>
@@ -61,13 +61,40 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { required } from "@/common/forms/formValidations.js"; // Import validation rules
+import { defineEmits, onMounted, onUnmounted, ref } from "vue";
+
+/*
+// Define props (directly access it instead of destructuring)
+const props = defineProps({
+  modelValue: {
+    type: Boolean,
+    required: true,
+  },
+}); */
+// Emit event to notify parent when dialog visibility changes
+const emit = defineEmits(["update:modelValue"]);
 
 // Reactive state for the form
 const dialog = ref(false);
-const valid = ref(true);
-const fields = ref([{ problem: "", description: "" }]); // Initial field
+const formValid = ref(true);
+const fields = ref([]); // Initial field
 
+/*
+// Watch the modelValue to reset form fields when dialog is opened
+watch(props.modelValue, (newValue) => {
+  if (newValue) {
+    // Reset fields when dialog is opened
+    fields.value = [{ problem: "", description: "" }];
+    formValid.value = true; // Reset the form validity
+  }
+});
+*/
+// Watch for changes to the internal dialog state
+/*watch(dialog, (newVal) => {
+  emit("update:modelValue", newVal); // Update the parent when dialog state changes
+});
+*/
 // Add more fields
 const addMoreFields = () => {
   fields.value.push({ problem: "", description: "" });
@@ -75,7 +102,7 @@ const addMoreFields = () => {
 
 // Close the dialog
 const closeDialog = () => {
-  dialog.value = false;
+  emit("update:modelValue", false);
 };
 
 // Submit the form
@@ -85,20 +112,20 @@ const submitForm = () => {
   closeDialog();
 };
 
+/*
 // Show the dialog (you can trigger this from the parent)
 // eslint-disable-next-line
 const showDialog = () => {
   dialog.value = true;
 };
+*/
+onUnmounted(() => {
+  fields.value = [];
+});
+
+onMounted(() => {
+  fields.value = [{ problem: "", description: "" }];
+});
 </script>
 
-<style scoped>
-.v-label {
-  display: flex;
-  align-items: center;
-}
-
-.text-danger {
-  color: red;
-}
-</style>
+<style scoped></style>
