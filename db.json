@@ -9,6 +9,21 @@
       "id": 2,
       "name": "Plant B",
       "description": "Description for Plant B"
+    },
+    {
+      "id": 3,
+      "name": "Plant C",
+      "description": "Description for Plant C"
+    },
+    {
+      "id": 4,
+      "name": "Plant D",
+      "description": "Description for Plant D"
+    },
+    {
+      "id": 5,
+      "name": "Plant E",
+      "description": "Description for Plant E"
     }
   ],
 
@@ -44,6 +59,62 @@
       "description": "The quality control checks on products.",
       "isActive": true,
       "plantId": 2
+    },
+    {
+      "id": 5,
+      "sno": 3,
+      "process": "Welding",
+      "description": "Welding of metal components.",
+      "isActive": true,
+      "plantId": 3
+    },
+    {
+      "id": 6,
+      "sno": 4,
+      "process": "Assembly",
+      "description": "Assembly of parts into the final product.",
+      "isActive": false,
+      "plantId": 3
+    },
+    {
+      "id": 7,
+      "sno": 5,
+      "process": "Inspection",
+      "description": "Inspection of finished products for defects.",
+      "isActive": true,
+      "plantId": 4
+    },
+    {
+      "id": 8,
+      "sno": 6,
+      "process": "Packaging",
+      "description": "Packaging of the finished product for shipping.",
+      "isActive": true,
+      "plantId": 4
+    },
+    {
+      "id": 9,
+      "sno": 7,
+      "process": "Finishing",
+      "description": "Surface finishing of the product.",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": 10,
+      "sno": 8,
+      "process": "Labeling",
+      "description": "Labeling of the packaged product.",
+      "isActive": false,
+      "plantId": 5
+    },
+    {
+      "id": 11,
+      "sno": 9,
+      "process": "Packing",
+      "description": "Final packing of product into boxes.",
+      "isActive": true,
+      "plantId": 5
     }
   ]
 }

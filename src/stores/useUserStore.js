@@ -4,6 +4,7 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 let urls = {
+  baseUrl: "https://c-iota-dev31-apigateway.azure-api.net",
   loginUrl: "/userprofile/api/Account/Login",
 };
 export const useUserStore = defineStore("user", () => {
@@ -12,7 +13,7 @@ export const useUserStore = defineStore("user", () => {
   const login = async (credentials) => {
     try {
       const response = await axiosInstance.post(
-        urls.loginUrl,
+        urls.baseUrl + urls.loginUrl,
 
         { UserName: credentials.email, Password: credentials.password }
       );
