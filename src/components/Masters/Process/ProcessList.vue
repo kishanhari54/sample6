@@ -58,6 +58,10 @@ const props = defineProps({
     type: Number,
     default: null,
   },
+  tableSearch: {
+    type: String,
+    default: "",
+  },
 });
 
 const headers = [
@@ -98,6 +102,14 @@ watch(
     }
   },
   { immediate: true } // Trigger fetchProcesses immediately when component mounts
+);
+
+watch(
+  () => props.tableSearch,
+  (value) => {
+    console.log(value);
+    searchQuery.value = value;
+  }
 );
 
 // Edit process function

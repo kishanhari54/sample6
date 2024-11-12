@@ -5,7 +5,7 @@
     </section>
     <section class="actions">
       <div>
-        <SearchProcess></SearchProcess>
+        <SearchProcess @searchProcess="searchProcess"></SearchProcess>
       </div>
       <div>
         <DownloadList></DownloadList>
@@ -22,7 +22,10 @@
     <SelectPlant @plantSelected="onPlantSelected"></SelectPlant>
   </section>
   <section class="page-data">
-    <ProcessList :selectedPlant="selectedPlant"></ProcessList>
+    <ProcessList
+      :selectedPlant="selectedPlant"
+      :tableSearch="tableSearch"
+    ></ProcessList>
   </section>
 </template>
 <script setup>
@@ -36,11 +39,17 @@ import UploadList from "../components/Masters/Process/UploadList";
 
 // Declare a reactive variable for selected plant
 const selectedPlant = ref(null);
+const tableSearch = ref(null);
 
 // Handle the plant selection
 const onPlantSelected = (plantId) => {
   selectedPlant.value = plantId; // Set the selected plant's ID
   console.log(selectedPlant.value);
+};
+
+const searchProcess = (value) => {
+  console.log("search " + value);
+  tableSearch.value = value;
 };
 </script>
 <style scoped>
