@@ -24,6 +24,9 @@
 <script setup>
 import { defineEmits, onMounted, ref } from "vue";
 import axiosInstance from "../../../services/axiosInstance"; // Adjust the import path as needed
+import { useMasterProcessStore } from "./store/masterprocess";
+
+const masterProcessStore = useMasterProcessStore(); // Use the Pinia store
 
 // Declare reactive variables
 const plants = ref([]); // List of plants fetched from API
@@ -37,6 +40,9 @@ const emit = defineEmits("plantSelected");
 const onPlantSelected = (value) => {
   // Emit an event with the selected plant value
   emit("plantSelected", value);
+  console.log(masterProcessStore);
+  // Update Pinia store
+  masterProcessStore.setPlant(value); // Access `setPlant` method directly from the store
 };
 
 // Fetch the plant list from the API

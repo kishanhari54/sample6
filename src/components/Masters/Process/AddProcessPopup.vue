@@ -64,6 +64,7 @@
 import { required } from "@/common/forms/formValidations.js"; // Import validation rules
 import { defineEmits, defineProps, onMounted, onUnmounted, ref } from "vue";
 import axiosInstance from "../../../services/axiosInstance";
+import { useMasterProcessStore } from "./store/masterprocess";
 /*
 // Define props (directly access it instead of destructuring)
 const props = defineProps({
@@ -79,6 +80,8 @@ const props = defineProps({
 });
 // Emit event to notify parent when dialog visibility changes
 const emit = defineEmits(["update:modelValue"]);
+
+const masterProcessStore = useMasterProcessStore();
 
 // Reactive state for the form
 const dialog = ref(false);
@@ -113,18 +116,37 @@ const closeDialog = () => {
 // Submit the form
 const submitForm = async () => {
   // Process form submission
-  console.log(fields.value);
-  const newProcess = {
-    id: 12,
+  // console.log(fields.value);
+  let newProcess = fields.value.map((field, index) => {
+    return {
+      // id: Math.random() * 100, // You can generate a random id or get it from your backend
+      sno: index + 1, // This is where you manage your process order (auto incremented)
+      process: field.problem, // Assuming 'problem' field is the process name
+      description: field.description, // Description field
+      isActive: true, // Set the active status
+      plantId: +masterProcessStore.selectedPlant.value || +props.selectedPlant, // Get the plant ID
+    };
+  });
+
+  console.log(+masterProcessStore.selectedPlant.value);
+  console.log(+props.selectedPlant);
+  /* const newProcess = {
+    id: Math.random() * 100,
     sNo: 1,
-    plantId: props.selectedPlant,
+    plantId: masterProcessStore.selectedPlant.value || props.selectedPlant,
     process: fields.value.problem,
     description: fields.value.description,
     isActive: true,
-  };
+  };*/
+
   let response = await axiosInstance.post(
     "http://localhost:3000/processes",
-    newProcess
+    newProcess[0],
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
   );
   console.log(response);
   closeDialog();

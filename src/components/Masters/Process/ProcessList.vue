@@ -94,7 +94,7 @@ const fetchProcesses = async (plantId) => {
 watch(
   () => props.selectedPlant,
   (newPlantId) => {
-    console.log(newPlantId);
+    //console.log(newPlantId);
     fetchProcesses(newPlantId);
 
     /*if (newPlantId) {
@@ -165,9 +165,10 @@ const toggleActiveStatus = async (process) => {
 
 const filteredItems = computed(() => {
   return processes.value.filter((item) => {
-    return item.description
-      .toLowerCase()
-      .includes(searchQuery.value.toLowerCase());
+    return (
+      item.description &&
+      item.description.toLowerCase().includes(searchQuery.value.toLowerCase())
+    );
   });
 });
 

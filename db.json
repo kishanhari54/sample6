@@ -116,10 +116,12 @@
       "plantId": 5
     },
     {
-      "id": 12,
-      "sNo": 1,
-      "plantId": null,
-      "isActive": true
+      "id": "12",
+      "sno": 1,
+      "process": "Test",
+      "description": "Value",
+      "isActive": true,
+      "plantId": 5
     }
   ]
 }
