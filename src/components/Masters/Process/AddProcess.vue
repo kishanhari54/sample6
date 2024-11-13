@@ -1,5 +1,5 @@
 <template>
-  <v-btn @click="openDialog">Add Process</v-btn>
+  <v-btn @click="openDialog" size="large">Add Process</v-btn>
 
   <AddProcessPopup
     v-model="openDialogForm"

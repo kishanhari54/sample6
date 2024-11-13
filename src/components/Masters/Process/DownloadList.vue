@@ -1,5 +1,3 @@
 <template>
-  <v-btn density="compact" icon="mdi-download-box"></v-btn>
-  <v-btn density="compact" icon="mdi-download-box"></v-btn>
-  <v-icon> customIcon1 </v-icon>
+  <v-btn variant="outlined" rounded="0" icon="custom:DownloadFile"></v-btn>
 </template>

@@ -1,5 +1,6 @@
 /* eslint-disable */
 // Styles
+import DownloadFile from "@/assets/icons/DownloadFile";
 import UploadDocument from "@/assets/icons/UploadDocument";
 import uploadIcon from "@/assets/icons/uploadIcon";
 import "@mdi/font/css/materialdesignicons.css";
@@ -21,7 +22,7 @@ const customIconSet = {
 
 */
 
-const customIcons = { uploadIcon, UploadDocument };
+const customIcons = { uploadIcon, UploadDocument, DownloadFile };
 
 const custom = {
   component: (props) =>

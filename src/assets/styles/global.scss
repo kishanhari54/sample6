@@ -1,13 +1,38 @@
-:root{ 
---button-primary-color: #DC0032;
+:root {
+  --button-primary-color: #dc0032;
+  --v-theme-background: #dc0032 !important;
+  --v-btn-background: #ff5722; /* Button background color */
+  --v-btn-text-color: #ffffff; /* Button text color */
+  --v-btn-hover-background: #d84315; /* Button background color on hover */
+  --v-btn-active-background: #bf360c; /* Button background color when active */
+  --v-btn-border-radius: 8px; /* Optional: button border radius */
 }
 
-.button-primary{
-background-color :var(--button-primary-color) !important;
-font-family: Open Sans;
-font-size: 15px;
-font-weight: 700;
-line-height: 20.43px;
-text-align: center;
-color:white;
+.button-primary {
+  background-color: var(--button-primary-color) !important;
+  font-family: Open Sans;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20.43px;
+  text-align: center;
+  color: white;
+}
+
+/*
+v-btn {
+  background-color: var(--button-primary-color) !important;
+  font-family: Open Sans;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20.43px;
+  text-align: center;
+  color: white;
+}
+*/
+
+.v-btn,
+.v-btn--icon {
+  height: 44px !important;
+  border-radius: 6px !important;
+  border-color: #dc0032 !important;
 }
