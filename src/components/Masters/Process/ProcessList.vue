@@ -74,8 +74,8 @@ const searchQuery = ref("");
 
 // Fetch processes from API
 const fetchProcesses = async (plantId) => {
-  let url =
-    "https://my-json-server.typicode.com/kishanhari54/sample6/processes";
+  let url = " http://localhost:3000/processes";
+  // "https://my-json-server.typicode.com/kishanhari54/sample6/processes";
   if (plantId) {
     url = url + `?plantId=${plantId}`;
   }

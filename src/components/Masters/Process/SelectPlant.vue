@@ -49,7 +49,8 @@ const onPlantSelected = (value) => {
 const fetchPlants = async () => {
   try {
     const response = await axiosInstance.get(
-      "https://my-json-server.typicode.com/kishanhari54/sample6/plants"
+      //  "https://my-json-server.typicode.com/kishanhari54/sample6/plants"
+      "http://localhost:3000/plants"
     );
 
     plants.value = response.data; // Store the plants fetched from the API
