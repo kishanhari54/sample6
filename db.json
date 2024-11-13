@@ -128,7 +128,7 @@
       "sno": 1,
       "process": "Test1",
       "description": "Value1",
-      "isActive": true,
+      "isActive": false,
       "plantId": 5
     }
   ]
