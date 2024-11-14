@@ -67,4 +67,11 @@ v-btn {
   td {
     background-color: #ebebeb80;
   }
+
+  td.action-buttons {
+    display: flex;
+    gap: 5px;
+    color: red;
+    align-items: center;
+  }
 }
