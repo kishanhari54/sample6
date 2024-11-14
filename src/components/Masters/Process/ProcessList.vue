@@ -28,9 +28,9 @@
         <td>{{ props.item.sno }}</td>
         <td>{{ props.item.process }}</td>
         <td>{{ props.item.description }}</td>
-        <td>
+        <td class="action-buttons">
           <!-- Action buttons with icons -->
-          <v-btn icon @click="editProcess(props.item)">
+          <!--  <v-btn icon @click="editProcess(props.item)">
             <v-icon>mdi-pencil</v-icon>
           </v-btn>
           <v-btn icon @click="deleteProcess(props.item.id)">
@@ -42,7 +42,12 @@
                 ? "mdi-toggle-switch"
                 : "mdi-toggle-switch-off"
             }}</v-icon>
-          </v-btn>
+          </v-btn> -->
+          <v-icon @click="editProcess(props.item)">mdi-pencil</v-icon>
+          <v-icon @click="deleteProcess(props.item.id)">mdi-delete</v-icon>
+          <v-icon @click="toggleActiveStatus(props.item)">{{
+            props.item.isActive ? "mdi-toggle-switch" : "mdi-toggle-switch-off"
+          }}</v-icon>
         </td>
       </tr>
     </template>
