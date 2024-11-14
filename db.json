@@ -48,7 +48,7 @@
       "sno": 1,
       "process": "Molding",
       "description": "The molding process of components.",
-      "isActive": true,
+      "isActive": false,
       "plantId": 2
     },
     {
@@ -56,7 +56,7 @@
       "sno": 2,
       "process": "Quality Control",
       "description": "The quality control checks on products.",
-      "isActive": false,
+      "isActive": true,
       "plantId": 2
     },
     {
@@ -64,7 +64,7 @@
       "sno": 3,
       "process": "Welding",
       "description": "Welding of metal components.",
-      "isActive": true,
+      "isActive": false,
       "plantId": 3
     },
     {
@@ -129,6 +129,614 @@
       "process": "Test1",
       "description": "Value1",
       "isActive": false,
+      "plantId": 5
+    },
+    {
+      "id": "397c",
+      "sno": 1,
+      "process": "Test Value",
+      "description": "Problem",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "397c",
+      "sno": 1,
+      "process": "Test Value",
+      "description": "Problem",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "1",
+      "sno": 1,
+      "process": "Grinding",
+      "description": "The grinding process of raw materials.",
+      "isActive": true,
+      "plantId": 1
+    },
+    {
+      "id": "2",
+      "sno": 2,
+      "process": "Packaging",
+      "description": "The packaging process of final products.",
+      "isActive": false,
+      "plantId": 1
+    },
+    {
+      "id": "3",
+      "sno": 1,
+      "process": "Molding",
+      "description": "The molding process of components.",
+      "isActive": false,
+      "plantId": 2
+    },
+    {
+      "id": "4",
+      "sno": 2,
+      "process": "Quality Control",
+      "description": "The quality control checks on products.",
+      "isActive": true,
+      "plantId": 2
+    },
+    {
+      "id": "5",
+      "sno": 3,
+      "process": "Welding",
+      "description": "Welding of metal components.",
+      "isActive": false,
+      "plantId": 3
+    },
+    {
+      "id": "6",
+      "sno": 4,
+      "process": "Assembly",
+      "description": "Assembly of parts into the final product.",
+      "isActive": false,
+      "plantId": 3
+    },
+    {
+      "id": "7",
+      "sno": 5,
+      "process": "Inspection",
+      "description": "Inspection of finished products for defects.",
+      "isActive": true,
+      "plantId": 4
+    },
+    {
+      "id": "8",
+      "sno": 6,
+      "process": "Packaging",
+      "description": "Packaging of the finished product for shipping.",
+      "isActive": true,
+      "plantId": 4
+    },
+    {
+      "id": "9",
+      "sno": 7,
+      "process": "Finishing",
+      "description": "Surface finishing of the product.",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "10",
+      "sno": 8,
+      "process": "Labeling",
+      "description": "Labeling of the packaged product.",
+      "isActive": false,
+      "plantId": 5
+    },
+    {
+      "id": "11",
+      "sno": 9,
+      "process": "Packing",
+      "description": "Final packing of product into boxes.",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "12",
+      "sno": 1,
+      "process": "Test",
+      "description": "Value",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "c894",
+      "sno": 1,
+      "process": "Test1",
+      "description": "Value1",
+      "isActive": false,
+      "plantId": 5
+    },
+    {
+      "id": "397c",
+      "sno": 1,
+      "process": "Test Value",
+      "description": "Problem",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "397c",
+      "sno": 1,
+      "process": "Test Value",
+      "description": "Problem",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "1",
+      "sno": 1,
+      "process": "Grinding",
+      "description": "The grinding process of raw materials.",
+      "isActive": true,
+      "plantId": 1
+    },
+    {
+      "id": "2",
+      "sno": 2,
+      "process": "Packaging",
+      "description": "The packaging process of final products.",
+      "isActive": false,
+      "plantId": 1
+    },
+    {
+      "id": "3",
+      "sno": 1,
+      "process": "Molding",
+      "description": "The molding process of components.",
+      "isActive": false,
+      "plantId": 2
+    },
+    {
+      "id": "4",
+      "sno": 2,
+      "process": "Quality Control",
+      "description": "The quality control checks on products.",
+      "isActive": true,
+      "plantId": 2
+    },
+    {
+      "id": "5",
+      "sno": 3,
+      "process": "Welding",
+      "description": "Welding of metal components.",
+      "isActive": false,
+      "plantId": 3
+    },
+    {
+      "id": "6",
+      "sno": 4,
+      "process": "Assembly",
+      "description": "Assembly of parts into the final product.",
+      "isActive": false,
+      "plantId": 3
+    },
+    {
+      "id": "7",
+      "sno": 5,
+      "process": "Inspection",
+      "description": "Inspection of finished products for defects.",
+      "isActive": true,
+      "plantId": 4
+    },
+    {
+      "id": "8",
+      "sno": 6,
+      "process": "Packaging",
+      "description": "Packaging of the finished product for shipping.",
+      "isActive": true,
+      "plantId": 4
+    },
+    {
+      "id": "9",
+      "sno": 7,
+      "process": "Finishing",
+      "description": "Surface finishing of the product.",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "10",
+      "sno": 8,
+      "process": "Labeling",
+      "description": "Labeling of the packaged product.",
+      "isActive": false,
+      "plantId": 5
+    },
+    {
+      "id": "11",
+      "sno": 9,
+      "process": "Packing",
+      "description": "Final packing of product into boxes.",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "12",
+      "sno": 1,
+      "process": "Test",
+      "description": "Value",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "c894",
+      "sno": 1,
+      "process": "Test1",
+      "description": "Value1",
+      "isActive": false,
+      "plantId": 5
+    },
+    {
+      "id": "397c",
+      "sno": 1,
+      "process": "Test Value",
+      "description": "Problem",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "397c",
+      "sno": 1,
+      "process": "Test Value",
+      "description": "Problem",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "1",
+      "sno": 1,
+      "process": "Grinding",
+      "description": "The grinding process of raw materials.",
+      "isActive": true,
+      "plantId": 1
+    },
+    {
+      "id": "2",
+      "sno": 2,
+      "process": "Packaging",
+      "description": "The packaging process of final products.",
+      "isActive": false,
+      "plantId": 1
+    },
+    {
+      "id": "3",
+      "sno": 1,
+      "process": "Molding",
+      "description": "The molding process of components.",
+      "isActive": false,
+      "plantId": 2
+    },
+    {
+      "id": "4",
+      "sno": 2,
+      "process": "Quality Control",
+      "description": "The quality control checks on products.",
+      "isActive": true,
+      "plantId": 2
+    },
+    {
+      "id": "5",
+      "sno": 3,
+      "process": "Welding",
+      "description": "Welding of metal components.",
+      "isActive": false,
+      "plantId": 3
+    },
+    {
+      "id": "6",
+      "sno": 4,
+      "process": "Assembly",
+      "description": "Assembly of parts into the final product.",
+      "isActive": false,
+      "plantId": 3
+    },
+    {
+      "id": "7",
+      "sno": 5,
+      "process": "Inspection",
+      "description": "Inspection of finished products for defects.",
+      "isActive": true,
+      "plantId": 4
+    },
+    {
+      "id": "8",
+      "sno": 6,
+      "process": "Packaging",
+      "description": "Packaging of the finished product for shipping.",
+      "isActive": true,
+      "plantId": 4
+    },
+    {
+      "id": "9",
+      "sno": 7,
+      "process": "Finishing",
+      "description": "Surface finishing of the product.",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "10",
+      "sno": 8,
+      "process": "Labeling",
+      "description": "Labeling of the packaged product.",
+      "isActive": false,
+      "plantId": 5
+    },
+    {
+      "id": "11",
+      "sno": 9,
+      "process": "Packing",
+      "description": "Final packing of product into boxes.",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "12",
+      "sno": 1,
+      "process": "Test",
+      "description": "Value",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "c894",
+      "sno": 1,
+      "process": "Test1",
+      "description": "Value1",
+      "isActive": false,
+      "plantId": 5
+    },
+    {
+      "id": "397c",
+      "sno": 1,
+      "process": "Test Value",
+      "description": "Problem",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "397c",
+      "sno": 1,
+      "process": "Test Value",
+      "description": "Problem",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "1",
+      "sno": 1,
+      "process": "Grinding",
+      "description": "The grinding process of raw materials.",
+      "isActive": true,
+      "plantId": 1
+    },
+    {
+      "id": "2",
+      "sno": 2,
+      "process": "Packaging",
+      "description": "The packaging process of final products.",
+      "isActive": false,
+      "plantId": 1
+    },
+    {
+      "id": "3",
+      "sno": 1,
+      "process": "Molding",
+      "description": "The molding process of components.",
+      "isActive": false,
+      "plantId": 2
+    },
+    {
+      "id": "4",
+      "sno": 2,
+      "process": "Quality Control",
+      "description": "The quality control checks on products.",
+      "isActive": true,
+      "plantId": 2
+    },
+    {
+      "id": "5",
+      "sno": 3,
+      "process": "Welding",
+      "description": "Welding of metal components.",
+      "isActive": false,
+      "plantId": 3
+    },
+    {
+      "id": "6",
+      "sno": 4,
+      "process": "Assembly",
+      "description": "Assembly of parts into the final product.",
+      "isActive": false,
+      "plantId": 3
+    },
+    {
+      "id": "7",
+      "sno": 5,
+      "process": "Inspection",
+      "description": "Inspection of finished products for defects.",
+      "isActive": true,
+      "plantId": 4
+    },
+    {
+      "id": "8",
+      "sno": 6,
+      "process": "Packaging",
+      "description": "Packaging of the finished product for shipping.",
+      "isActive": true,
+      "plantId": 4
+    },
+    {
+      "id": "9",
+      "sno": 7,
+      "process": "Finishing",
+      "description": "Surface finishing of the product.",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "10",
+      "sno": 8,
+      "process": "Labeling",
+      "description": "Labeling of the packaged product.",
+      "isActive": false,
+      "plantId": 5
+    },
+    {
+      "id": "11",
+      "sno": 9,
+      "process": "Packing",
+      "description": "Final packing of product into boxes.",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "12",
+      "sno": 1,
+      "process": "Test",
+      "description": "Value",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "c894",
+      "sno": 1,
+      "process": "Test1",
+      "description": "Value1",
+      "isActive": false,
+      "plantId": 5
+    },
+    {
+      "id": "397c",
+      "sno": 1,
+      "process": "Test Value",
+      "description": "Problem",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "397c",
+      "sno": 1,
+      "process": "Test Value",
+      "description": "Problem",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "1",
+      "sno": 1,
+      "process": "Grinding",
+      "description": "The grinding process of raw materials.",
+      "isActive": true,
+      "plantId": 1
+    },
+    {
+      "id": "2",
+      "sno": 2,
+      "process": "Packaging",
+      "description": "The packaging process of final products.",
+      "isActive": false,
+      "plantId": 1
+    },
+    {
+      "id": "3",
+      "sno": 1,
+      "process": "Molding",
+      "description": "The molding process of components.",
+      "isActive": false,
+      "plantId": 2
+    },
+    {
+      "id": "4",
+      "sno": 2,
+      "process": "Quality Control",
+      "description": "The quality control checks on products.",
+      "isActive": true,
+      "plantId": 2
+    },
+    {
+      "id": "5",
+      "sno": 3,
+      "process": "Welding",
+      "description": "Welding of metal components.",
+      "isActive": false,
+      "plantId": 3
+    },
+    {
+      "id": "6",
+      "sno": 4,
+      "process": "Assembly",
+      "description": "Assembly of parts into the final product.",
+      "isActive": false,
+      "plantId": 3
+    },
+    {
+      "id": "7",
+      "sno": 5,
+      "process": "Inspection",
+      "description": "Inspection of finished products for defects.",
+      "isActive": true,
+      "plantId": 4
+    },
+    {
+      "id": "8",
+      "sno": 6,
+      "process": "Packaging",
+      "description": "Packaging of the finished product for shipping.",
+      "isActive": true,
+      "plantId": 4
+    },
+    {
+      "id": "9",
+      "sno": 7,
+      "process": "Finishing",
+      "description": "Surface finishing of the product.",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "10",
+      "sno": 8,
+      "process": "Labeling",
+      "description": "Labeling of the packaged product.",
+      "isActive": false,
+      "plantId": 5
+    },
+    {
+      "id": "11",
+      "sno": 9,
+      "process": "Packing",
+      "description": "Final packing of product into boxes.",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "12",
+      "sno": 1,
+      "process": "Test",
+      "description": "Value",
+      "isActive": true,
+      "plantId": 5
+    },
+    {
+      "id": "c894",
+      "sno": 1,
+      "process": "Test1",
+      "description": "Value1",
+      "isActive": false,
+      "plantId": 5
+    },
+    {
+      "id": "397c",
+      "sno": 1,
+      "process": "Test Value",
+      "description": "Problem",
+      "isActive": true,
       "plantId": 5
     },
     {

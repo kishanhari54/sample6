@@ -13,6 +13,9 @@
       item-value="id"
       :loading="loading"
       :search="searchQuery"
+      :items-length="totalItems"
+      v-model:items-per-page="itemsPerPage"
+      v-model:page="page"
     >
       <!-- Loading state for the table -->
       <template v-slot:loading>
@@ -43,6 +46,59 @@
           </td>
         </tr>
       </template>
+
+      <template v-slot:bottom>
+        <div class="d-flex align-center justify-space-between pa-4">
+          <div class="d-flex flex-column">
+            <div class="d-flex ga-2 align-center">
+              Items Per Page
+              <v-select
+                v-model="itemsPerPage"
+                :items="itemsPerPageOptions"
+                variant="outlined"
+                density="compact"
+                class="items-per-page-select"
+                hide-details
+              />
+            </div>
+            <div>Total Items : {{ totalItems }}</div>
+          </div>
+
+          <v-pagination
+            v-model="page"
+            :length="Math.ceil(totalItems / itemsPerPage)"
+            :total-visible="7"
+            class="custom-pagination"
+            @update:model-value="handlePageChange"
+          >
+            <template v-slot:prev="{ props }">
+              <v-btn
+                variant="text"
+                v-bind="props"
+                :disabled="page === 1"
+                class="text-none px-2"
+                size="small"
+                @click="changePage(page - 1)"
+              >
+                Previous
+              </v-btn>
+            </template>
+
+            <template v-slot:next="{ props }">
+              <v-btn
+                variant="text"
+                v-bind="props"
+                :disabled="page === Math.ceil(totalItems / itemsPerPage)"
+                class="text-none px-2"
+                size="small"
+                @click="changePage(page + 1)"
+              >
+                Next
+              </v-btn>
+            </template></v-pagination
+          >
+        </div>
+      </template>
     </v-data-table>
   </v-container>
 </template>
@@ -52,6 +108,45 @@ import { computed, defineProps, onMounted, ref, watch } from "vue";
 const loading = ref(true); // Loading state
 const processes = ref([]); // List of processes
 
+const filteredItems = computed(() => {
+  return processes.value.filter((item) => {
+    return (
+      item.description &&
+      item.description.toLowerCase().includes(searchQuery.value.toLowerCase())
+    );
+  });
+});
+// Pagination state
+const page = ref(1);
+const itemsPerPage = ref(10);
+const itemsPerPageOptions = [5, 10, 15, 20, 25];
+const totalItems = computed(() => filteredItems.value.length);
+
+/*
+// Computed properties for showing items range
+const startIndex = computed(() => {
+  return (page.value - 1) * itemsPerPage.value + 1;
+});
+
+const endIndex = computed(() => {
+  const end = page.value * itemsPerPage.value;
+  return end > filteredItems.value ? filteredItems.value.length : end;
+});
+*/
+
+const changePage = (value) => {
+  console.log(value);
+  debugger;
+  page.value = value;
+};
+// Event handlers
+const handlePageChange = (newPage) => {
+  loading.value = true;
+  page.value = newPage;
+  setTimeout(() => {
+    loading.value = false;
+  }, 200);
+};
 // Declare props to receive selectedPlant from parent
 const props = defineProps({
   selectedPlant: {
@@ -100,7 +195,7 @@ watch(
     /*if (newPlantId) {
       fetchProcesses(newPlantId);
     } else {
-      
+
       //processes.value = []; // Clear processes if no plant is selected
     } */
   },
@@ -162,15 +257,6 @@ const toggleActiveStatus = async (process) => {
     console.error("Error updating status:", error);
   }
 };
-
-const filteredItems = computed(() => {
-  return processes.value.filter((item) => {
-    return (
-      item.description &&
-      item.description.toLowerCase().includes(searchQuery.value.toLowerCase())
-    );
-  });
-});
 
 onMounted(fetchProcesses);
 </script>
