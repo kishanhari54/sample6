@@ -4,103 +4,102 @@
       <v-skeleton-loader type="table-row@10"></v-skeleton-loader>
     </template>
   </v-data-table> -->
-  <v-container>
-    <!-- v-data-table with sticky header -->
-    <v-data-table
-      sticky-header
-      :headers="headers"
-      :items="filteredItems"
-      item-value="id"
-      :loading="loading"
-      :search="searchQuery"
-      :items-length="totalItems"
-      v-model:items-per-page="itemsPerPage"
-      v-model:page="page"
-    >
-      <!-- Loading state for the table -->
-      <template v-slot:loading>
-        <v-skeleton-loader type="table-row@10"></v-skeleton-loader>
-      </template>
 
-      <!-- Actions column template -->
-      <template v-slot:item="props">
-        <tr>
-          <td>{{ props.item.sno }}</td>
-          <td>{{ props.item.process }}</td>
-          <td>{{ props.item.description }}</td>
-          <td>
-            <!-- Action buttons with icons -->
-            <v-btn icon @click="editProcess(props.item)">
-              <v-icon>mdi-pencil</v-icon>
-            </v-btn>
-            <v-btn icon @click="deleteProcess(props.item.id)">
-              <v-icon>mdi-delete</v-icon>
-            </v-btn>
-            <v-btn icon @click="toggleActiveStatus(props.item)">
-              <v-icon>{{
-                props.item.isActive
-                  ? "mdi-toggle-switch"
-                  : "mdi-toggle-switch-off"
-              }}</v-icon>
-            </v-btn>
-          </td>
-        </tr>
-      </template>
+  <!-- v-data-table with sticky header -->
+  <v-data-table
+    sticky-header
+    :headers="headers"
+    :items="filteredItems"
+    item-value="id"
+    :loading="loading"
+    :search="searchQuery"
+    :items-length="totalItems"
+    v-model:items-per-page="itemsPerPage"
+    v-model:page="page"
+  >
+    <!-- Loading state for the table -->
+    <template v-slot:loading>
+      <v-skeleton-loader type="table-row@10"></v-skeleton-loader>
+    </template>
 
-      <template v-slot:bottom>
-        <div class="d-flex align-center justify-space-between pa-4">
-          <div class="d-flex flex-column">
-            <div class="d-flex ga-2 align-center">
-              Items Per Page
-              <v-select
-                v-model="itemsPerPage"
-                :items="itemsPerPageOptions"
-                variant="outlined"
-                density="compact"
-                class="items-per-page-select"
-                hide-details
-              />
-            </div>
-            <div>Total Items : {{ totalItems }}</div>
+    <!-- Actions column template -->
+    <template v-slot:item="props">
+      <tr>
+        <td>{{ props.item.sno }}</td>
+        <td>{{ props.item.process }}</td>
+        <td>{{ props.item.description }}</td>
+        <td>
+          <!-- Action buttons with icons -->
+          <v-btn icon @click="editProcess(props.item)">
+            <v-icon>mdi-pencil</v-icon>
+          </v-btn>
+          <v-btn icon @click="deleteProcess(props.item.id)">
+            <v-icon>mdi-delete</v-icon>
+          </v-btn>
+          <v-btn icon @click="toggleActiveStatus(props.item)">
+            <v-icon>{{
+              props.item.isActive
+                ? "mdi-toggle-switch"
+                : "mdi-toggle-switch-off"
+            }}</v-icon>
+          </v-btn>
+        </td>
+      </tr>
+    </template>
+
+    <template v-slot:bottom>
+      <div class="d-flex align-center justify-space-between pa-4">
+        <div class="d-flex flex-column">
+          <div class="d-flex ga-2 align-center">
+            Items Per Page
+            <v-select
+              v-model="itemsPerPage"
+              :items="itemsPerPageOptions"
+              variant="outlined"
+              density="compact"
+              class="items-per-page-select"
+              hide-details
+            />
           </div>
-
-          <v-pagination
-            v-model="page"
-            :length="Math.ceil(totalItems / itemsPerPage)"
-            :total-visible="7"
-            class="custom-pagination"
-            @update:model-value="handlePageChange"
-          >
-            <template v-slot:prev="{ props }">
-              <v-btn
-                variant="text"
-                v-bind="props"
-                :disabled="page === 1"
-                class="text-none px-2"
-                size="small"
-                @click="changePage(page - 1)"
-              >
-                Previous
-              </v-btn>
-            </template>
-
-            <template v-slot:next="{ props }">
-              <v-btn
-                variant="text"
-                v-bind="props"
-                :disabled="page === Math.ceil(totalItems / itemsPerPage)"
-                class="text-none px-2"
-                size="small"
-                @click="changePage(page + 1)"
-              >
-                Next
-              </v-btn>
-            </template></v-pagination
-          >
+          <div>Total Items : {{ totalItems }}</div>
         </div>
-      </template>
-    </v-data-table>
-  </v-container>
+
+        <v-pagination
+          v-model="page"
+          :length="Math.ceil(totalItems / itemsPerPage)"
+          :total-visible="7"
+          class="custom-pagination"
+          @update:model-value="handlePageChange"
+        >
+          <template v-slot:prev="{ props }">
+            <v-btn
+              variant="text"
+              v-bind="props"
+              :disabled="page === 1"
+              class="text-none px-2"
+              size="small"
+              @click="changePage(page - 1)"
+            >
+              Previous
+            </v-btn>
+          </template>
+
+          <template v-slot:next="{ props }">
+            <v-btn
+              variant="text"
+              v-bind="props"
+              :disabled="page === Math.ceil(totalItems / itemsPerPage)"
+              class="text-none px-2"
+              size="small"
+              @click="changePage(page + 1)"
+            >
+              Next
+            </v-btn>
+          </template></v-pagination
+        >
+      </div>
+    </template>
+  </v-data-table>
 </template>
 <script setup>
 import axios from "axios";

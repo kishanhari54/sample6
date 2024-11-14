@@ -1,25 +1,29 @@
 <template>
-  <v-row>
-    <v-col cols="3">
-      <!-- Label for the Dropdown -->
-      <div>Select Plant:</div>
+  <div class="section">
+    <v-row>
+      <v-col cols="3">
+        <div class="field-box">
+          <!-- Label for the Dropdown -->
+          <div class="label">Select Plant:</div>
 
-      <!-- v-select to dynamically populate with plant data -->
-      <v-select
-        label="Select a Plant"
-        v-model="selectedPlant"
-        :items="plants"
-        item-title="name"
-        item-value="id"
-        variant="solo-filled"
-        dense
-        clearable
-        outlined
-        :loading="loading"
-        @update:model-value="onPlantSelected"
-      ></v-select>
-    </v-col>
-  </v-row>
+          <!-- v-select to dynamically populate with plant data -->
+          <v-select
+            label="Select a Plant"
+            v-model="selectedPlant"
+            :items="plants"
+            item-title="name"
+            item-value="id"
+            variant="solo-filled"
+            dense
+            clearable
+            outlined
+            :loading="loading"
+            @update:model-value="onPlantSelected"
+          ></v-select>
+        </div>
+      </v-col>
+    </v-row>
+  </div>
 </template>
 <script setup>
 import { defineEmits, onMounted, ref } from "vue";
@@ -78,4 +82,9 @@ onMounted(fetchPlants);
   },
 ]; */
 </script>
-<style scoped></style>
+<style scoped>
+.section {
+  border: 1px solid var(--S-Grey-4, #d2d2d2);
+  padding: 10px 30px;
+}
+</style>

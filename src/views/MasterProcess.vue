@@ -68,9 +68,12 @@ const searchProcess = (value) => {
   }
 
   .title {
+    font-family: Open Sans;
     font-size: 24px;
     font-weight: 700;
-    line-height: 32px;
+    line-height: 32.68px;
+    letter-spacing: 0.04em;
+    text-align: left;
   }
 }
 </style>

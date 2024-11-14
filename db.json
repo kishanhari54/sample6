@@ -40,7 +40,7 @@
       "sno": 2,
       "process": "Packaging",
       "description": "The packaging process of final products.",
-      "isActive": false,
+      "isActive": true,
       "plantId": 1
     },
     {

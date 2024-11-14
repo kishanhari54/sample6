@@ -24,13 +24,15 @@ import HeaderComponent from "../components/Header/HeaderComponent.vue";
   display: flex;
   flex-direction: column;
   .route-content {
-    height: calc(100vh - 100px);
-    max-width: 1200px;
-    min-width: 1000px;
+    height: calc(100vh - 50px - 65px);
+    overflow: scroll;
+    padding: 30px;
   }
-  .footer,
-  .header {
+  .footer {
     height: 50px;
+  }
+  .header {
+    height: 65px;
   }
 }
 </style>

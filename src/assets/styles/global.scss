@@ -36,3 +36,35 @@ v-btn {
   border-radius: 6px !important;
   border-color: #dc0032 !important;
 }
+
+.field-box {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  .label {
+    font-family: Open Sans;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 29.96px;
+    letter-spacing: 0.04em;
+    text-align: right;
+    color: var(--S-Grey-2, #828282);
+  }
+}
+
+.v-table {
+  th {
+    background: var(--S-Black, #000000);
+    color: #ffffff;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21.79px;
+    letter-spacing: 0.04em;
+    text-align: left;
+  }
+  td {
+    background-color: #ebebeb80;
+  }
+}
