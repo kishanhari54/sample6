@@ -1,31 +1,33 @@
-<template>
-  <section class="page-header">
-    <section class="title">
-      <span>Master Process</span>
+<template class="d-flex">
+  <section class="page-container">
+    <section class="page-header">
+      <section class="title">
+        <span>Master Process</span>
+      </section>
+      <section class="actions">
+        <div>
+          <SearchProcess @searchProcess="searchProcess"></SearchProcess>
+        </div>
+        <div>
+          <DownloadList></DownloadList>
+        </div>
+        <div>
+          <UploadList></UploadList>
+        </div>
+        <div>
+          <AddProcess :selectedPlant="selectedPlant"></AddProcess>
+        </div>
+      </section>
     </section>
-    <section class="actions">
-      <div>
-        <SearchProcess @searchProcess="searchProcess"></SearchProcess>
-      </div>
-      <div>
-        <DownloadList></DownloadList>
-      </div>
-      <div>
-        <UploadList></UploadList>
-      </div>
-      <div>
-        <AddProcess :selectedPlant="selectedPlant"></AddProcess>
-      </div>
+    <section class="page-options">
+      <SelectPlant @plantSelected="onPlantSelected"></SelectPlant>
     </section>
-  </section>
-  <section class="page-options">
-    <SelectPlant @plantSelected="onPlantSelected"></SelectPlant>
-  </section>
-  <section class="page-data">
-    <ProcessList
-      :selectedPlant="selectedPlant"
-      :tableSearch="tableSearch"
-    ></ProcessList>
+    <section class="page-data">
+      <ProcessList
+        :selectedPlant="selectedPlant"
+        :tableSearch="tableSearch"
+      ></ProcessList>
+    </section>
   </section>
 </template>
 <script setup>
@@ -53,7 +55,18 @@ const searchProcess = (value) => {
 };
 </script>
 <style scoped>
+.page-container {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  height: 100%;
+}
+
+.page-options {
+  height: 105px;
+}
 .page-header {
+  height: 50px;
   display: flex;
   justify-content: space-between;
   .title,
@@ -75,5 +88,9 @@ const searchProcess = (value) => {
     letter-spacing: 0.04em;
     text-align: left;
   }
+}
+
+.page-data {
+  max-height: calc(100% - 170px);
 }
 </style>

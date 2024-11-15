@@ -32,7 +32,7 @@
       "sno": 1,
       "process": "Grinding",
       "description": "The grinding process of raw materials.",
-      "isActive": true,
+      "isActive": false,
       "plantId": 1
     },
     {

@@ -30,7 +30,7 @@
         <td>{{ props.item.description }}</td>
         <td class="action-buttons">
           <!-- Action buttons with icons -->
-          <!--  <v-btn icon @click="editProcess(props.item)">
+          <v-btn icon @click="editProcess(props.item)">
             <v-icon>mdi-pencil</v-icon>
           </v-btn>
           <v-btn icon @click="deleteProcess(props.item.id)">
@@ -42,18 +42,26 @@
                 ? "mdi-toggle-switch"
                 : "mdi-toggle-switch-off"
             }}</v-icon>
-          </v-btn> -->
+          </v-btn>
           <v-icon @click="editProcess(props.item)">mdi-pencil</v-icon>
           <v-icon @click="deleteProcess(props.item.id)">mdi-delete</v-icon>
           <v-icon @click="toggleActiveStatus(props.item)">{{
             props.item.isActive ? "mdi-toggle-switch" : "mdi-toggle-switch-off"
           }}</v-icon>
+
+          <v-switch
+            inset
+            size="x-small"
+            v-model="props.item.isActive"
+            value="1"
+            hide-details
+          ></v-switch>
         </td>
       </tr>
     </template>
 
     <template v-slot:bottom>
-      <div class="d-flex align-center justify-space-between pa-4">
+      <div class="d-flex align-center justify-space-between pa-4 pagination">
         <div class="d-flex flex-column">
           <div class="d-flex ga-2 align-center">
             Items Per Page
@@ -264,3 +272,19 @@ const toggleActiveStatus = async (process) => {
 
 onMounted(fetchProcesses);
 </script>
+
+<style scoped>
+.v-table {
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  .v-table__wrapper {
+    max-height: 80%;
+    overflow: scroll;
+  }
+
+  .pagination {
+    height: 20%;
+  }
+}
+</style>
