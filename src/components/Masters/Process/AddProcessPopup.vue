@@ -1,6 +1,11 @@
 <template>
   <v-dialog v-model="dialog" max-width="500px">
     <v-card>
+      <v-progress-circular
+        v-if="loading"
+        model-value="20"
+      ></v-progress-circular>
+
       <v-card-title>
         <span class="headline">Add Process</span>
       </v-card-title>
@@ -63,8 +68,10 @@
 <script setup>
 import { required } from "@/common/forms/formValidations.js"; // Import validation rules
 import { defineEmits, defineProps, onMounted, onUnmounted, ref } from "vue";
+import { useToast } from "vue-toastification";
 import axiosInstance from "../../../services/axiosInstance";
 import { useMasterProcessStore } from "./store/masterprocess";
+
 /*
 // Define props (directly access it instead of destructuring)
 const props = defineProps({
@@ -73,6 +80,7 @@ const props = defineProps({
     required: true,
   },
 }); */
+const toast = useToast();
 const props = defineProps({
   selectedPlant: {
     type: Number,
@@ -82,6 +90,7 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"]);
 
 const masterProcessStore = useMasterProcessStore();
+const loading = ref(false);
 
 // Reactive state for the form
 const dialog = ref(false);
@@ -116,7 +125,7 @@ const closeDialog = () => {
 // Submit the form
 const submitForm = async () => {
   // Process form submission
-  // console.log(fields.value);
+
   let newProcess = fields.value.map((field, index) => {
     return {
       // id: Math.random() * 100, // You can generate a random id or get it from your backend
@@ -138,17 +147,24 @@ const submitForm = async () => {
     description: fields.value.description,
     isActive: true,
   };*/
+  loading.value = true;
 
-  let response = await axiosInstance.post(
-    "http://localhost:3000/processes",
-    newProcess[0],
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  console.log(response);
+  for (let i = 0; i < newProcess.length; i++) {
+    let response = await axiosInstance.post(
+      "http://localhost:3000/processes",
+      newProcess[i],
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    toast.success(`Problem ${response.data.process} Added`);
+  }
+
+  loading.value = false;
+
+  //console.log(response);
   closeDialog();
 };
 

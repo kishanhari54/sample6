@@ -25,7 +25,7 @@ import HeaderComponent from "../components/Header/HeaderComponent.vue";
   flex-direction: column;
   .route-content {
     height: calc(100vh - 50px - 65px);
-    overflow: scroll;
+    overflow: auto;
     padding: 30px;
   }
   .footer {

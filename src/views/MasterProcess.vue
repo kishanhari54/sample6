@@ -15,7 +15,9 @@
           <UploadList></UploadList>
         </div>
         <div>
-          <AddProcess :selectedPlant="selectedPlant"></AddProcess>
+          <AddProcess
+            @addProcessButtonClicked="addNewProcess(value)"
+          ></AddProcess>
         </div>
       </section>
     </section>
@@ -27,21 +29,24 @@
         :selectedPlant="selectedPlant"
         :tableSearch="tableSearch"
       ></ProcessList>
+
+      <AddProcessPopup v-model="openDialogForm" />
     </section>
   </section>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import AddProcess from "../components/Masters/Process/AddProcess";
+import AddProcessPopup from "../components/Masters/Process/AddProcessPopup";
 import DownloadList from "../components/Masters/Process/DownloadList";
 import ProcessList from "../components/Masters/Process/ProcessList";
 import SearchProcess from "../components/Masters/Process/SearchProcess";
 import SelectPlant from "../components/Masters/Process/SelectPlant";
 import UploadList from "../components/Masters/Process/UploadList";
-
 // Declare a reactive variable for selected plant
 const selectedPlant = ref(null);
 const tableSearch = ref(null);
+let openDialogForm = ref(false);
 
 // Handle the plant selection
 const onPlantSelected = (plantId) => {
@@ -53,6 +58,19 @@ const searchProcess = (value) => {
   console.log("search " + value);
   tableSearch.value = value;
 };
+
+const addNewProcess = (value) => {
+  console.log(value);
+  openDialogForm.value = true;
+};
+
+// Watch for dialog visibility change
+watch(openDialogForm, (newValue) => {
+  if (!newValue) {
+    console.log("Dialog is closed.");
+    ProcessList.fetchProcesses;
+  }
+});
 </script>
 <style scoped>
 .page-container {
