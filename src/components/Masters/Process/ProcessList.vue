@@ -116,9 +116,18 @@
 </template>
 <script setup>
 import axios from "axios";
-import { computed, defineProps, onMounted, ref, watch } from "vue";
+import {
+  computed,
+  defineEmits,
+  defineExpose,
+  defineProps,
+  onMounted,
+  ref,
+  watch,
+} from "vue";
 const loading = ref(true); // Loading state
 const processes = ref([]); // List of processes
+const emit = defineEmits("editProcess");
 
 const filteredItems = computed(() => {
   return processes.value.filter((item) => {
@@ -223,9 +232,10 @@ watch(
 );
 
 // Edit process function
-const editProcess = (process) => {
-  // Logic for editing the process (can be a modal or navigation to an edit page)
-  console.log("Editing process:", process);
+
+// Emit the event with the processId when Edit is clicked
+const editProcess = (id) => {
+  emit("editProcess", id); // Pass the process ID to the parent
 };
 
 // Delete process function
@@ -271,6 +281,10 @@ const toggleActiveStatus = async (process) => {
 };
 
 onMounted(fetchProcesses);
+
+defineExpose({
+  fetchProcesses,
+});
 </script>
 
 <style scoped>

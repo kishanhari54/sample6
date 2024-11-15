@@ -67,7 +67,14 @@
 
 <script setup>
 import { required } from "@/common/forms/formValidations.js"; // Import validation rules
-import { defineEmits, defineProps, onMounted, onUnmounted, ref } from "vue";
+import {
+  defineEmits,
+  defineProps,
+  onMounted,
+  onUnmounted,
+  ref,
+  watch,
+} from "vue";
 import { useToast } from "vue-toastification";
 import axiosInstance from "../../../services/axiosInstance";
 import { useMasterProcessStore } from "./store/masterprocess";
@@ -80,12 +87,15 @@ const props = defineProps({
     required: true,
   },
 }); */
-const toast = useToast();
+// Define props to receive data from parent component
 const props = defineProps({
-  selectedPlant: {
-    type: Number,
-  },
+  modelValue: Boolean,
+  selectedPlant: Number,
+  mode: String, // 'add' or 'edit'
+  processId: Number, // Process ID for editing
 });
+
+const toast = useToast();
 // Emit event to notify parent when dialog visibility changes
 const emit = defineEmits(["update:modelValue"]);
 
@@ -150,18 +160,35 @@ const submitForm = async () => {
   loading.value = true;
 
   for (let i = 0; i < newProcess.length; i++) {
-    let response = await axiosInstance.post(
-      "http://localhost:3000/processes",
-      newProcess[i],
-      {
-        headers: {
-          "Content-Type": "application/json",
+    if (props.mode == "edit") {
+      let response = await axiosInstance.patch(
+        "http://localhost:3000/processes/" + props.processId.id,
+        {
+          process: newProcess[i].problem, // Assuming 'problem' field is the process name
+          description: newProcess[i].description, // Description field
         },
-      }
-    );
-    toast.success(`Problem ${response.data.process} Added`);
-  }
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      toast.success(`Problem ${response.data.process} Updated`);
+    } else {
+      let response = await axiosInstance.post(
+        "http://localhost:3000/processes",
+        newProcess[i],
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
+      toast.success(`Problem ${response.data.process} Added`);
+    }
+  }
+  emit("processUpdated", newProcess);
   loading.value = false;
 
   //console.log(response);
@@ -182,6 +209,36 @@ onUnmounted(() => {
 onMounted(() => {
   fields.value = [{ problem: "", description: "" }];
 });
+
+// Watch for changes in dialog visibility
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    dialog.value = newValue;
+    if (newValue && props.mode === "edit") {
+      // If in edit mode, fetch the data for the process ID
+      console.log(props);
+      fetchProcessData(props.processId.id);
+    }
+  }
+);
+
+// Fetch the process data when in edit mode
+const fetchProcessData = async (id) => {
+  try {
+    const response = await axiosInstance.get(
+      `http://localhost:3000/processes/${id}`
+    );
+    fields.value = [
+      {
+        problem: response.data.process,
+        description: response.data.description,
+      },
+    ];
+  } catch (error) {
+    console.error("Error fetching process data:", error);
+  }
+};
 </script>
 
 <style scoped></style>

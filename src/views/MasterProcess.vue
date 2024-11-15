@@ -26,11 +26,18 @@
     </section>
     <section class="page-data">
       <ProcessList
+        ref="processLista"
         :selectedPlant="selectedPlant"
         :tableSearch="tableSearch"
+        @editProcess="editProcess"
       ></ProcessList>
 
-      <AddProcessPopup v-model="openDialogForm" />
+      <AddProcessPopup
+        v-model="openDialogForm"
+        :mode="mode"
+        :processId="processId"
+        @processUpdated="reloadProcessList"
+      />
     </section>
   </section>
 </template>
@@ -48,6 +55,11 @@ const selectedPlant = ref(null);
 const tableSearch = ref(null);
 let openDialogForm = ref(false);
 
+// New reactive variables for mode and processId
+const mode = ref("add"); // default to 'add'
+const processId = ref(null); // To store the ID for editing
+const processLista = ref(null); // Correctly define ref
+
 // Handle the plant selection
 const onPlantSelected = (plantId) => {
   selectedPlant.value = plantId; // Set the selected plant's ID
@@ -60,15 +72,39 @@ const searchProcess = (value) => {
 };
 
 const addNewProcess = (value) => {
-  console.log(value);
+  // If value is set, it means this is an edit, otherwise, it's an add
+  if (value) {
+    mode.value = "edit"; // Set mode to edit if a process is passed
+    processId.value = value.id; // Pass the process ID for editing
+  } else {
+    mode.value = "add"; // Set to add mode
+    processId.value = null; // Reset the ID for add mode
+  }
+
   openDialogForm.value = true;
 };
 
+// New function to handle editProcess event from ProcessList
+const editProcess = (id) => {
+  mode.value = "edit"; // Set mode to edit
+  processId.value = id; // Set the process ID
+  openDialogForm.value = true; // Open the dialog
+};
+//const childRef = useTemplateRef("processList");
+
+const reloadProcessList = async () => {
+  debugger;
+
+  if (processLista.value) {
+    await processLista.value.fetchProcesses(selectedPlant.value); // Reload data from the ProcessList component
+  }
+  openDialogForm.value = false; // Close the modal
+};
 // Watch for dialog visibility change
 watch(openDialogForm, (newValue) => {
   if (!newValue) {
-    console.log("Dialog is closed.");
-    ProcessList.fetchProcesses;
+    //console.log("Dialog is closed.");
+    //ProcessList.fetchProcesses;
   }
 });
 </script>
