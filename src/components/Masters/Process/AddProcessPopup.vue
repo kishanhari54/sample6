@@ -117,11 +117,15 @@ watch(props.modelValue, (newValue) => {
   }
 });
 */
+
 // Watch for changes to the internal dialog state
-/*watch(dialog, (newVal) => {
-  emit("update:modelValue", newVal); // Update the parent when dialog state changes
+watch(dialog, (newVal) => {
+  //  emit("update:modelValue", newVal); // Update the parent when dialog state changes
+  if (newVal) {
+    fields.value = [{ problem: "", description: "" }];
+  }
 });
-*/
+
 // Add more fields
 const addMoreFields = () => {
   fields.value.push({ problem: "", description: "" });

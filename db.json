@@ -32,7 +32,7 @@
       "sno": 1,
       "process": "Grinding",
       "description": "The grinding process of raw materials.asaad",
-      "isActive": false,
+      "isActive": true,
       "plantId": 1
     },
     {
@@ -816,6 +816,22 @@
       "sno": 1,
       "process": "Inspection",
       "description": "Inspection of finished products for defects.s",
+      "isActive": true,
+      "plantId": null
+    },
+    {
+      "id": "bc60",
+      "sno": 1,
+      "process": "Inspection",
+      "description": "Inspection of finished products for defects.updated yes new\n",
+      "isActive": true,
+      "plantId": null
+    },
+    {
+      "id": "2a1c",
+      "sno": 1,
+      "process": "New PRocess",
+      "description": "Added",
       "isActive": true,
       "plantId": null
     }
