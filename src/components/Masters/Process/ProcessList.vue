@@ -61,7 +61,15 @@
     </template>
 
     <template v-slot:bottom>
-      <div class="d-flex align-center justify-space-between pa-4 pagination">
+      <VuePagination
+        :currentPage="page"
+        :itemsPerPage="itemsPerPage"
+        :totalItems="totalItems"
+        @update:currentPage="handlePageChange"
+        @update:itemsPerPage="updateItemsPerPage"
+      />
+
+      <!-- <div class="d-flex align-center justify-space-between pa-4 pagination">
         <div class="d-flex flex-column">
           <div class="d-flex ga-2 align-center">
             Items Per Page
@@ -110,11 +118,12 @@
             </v-btn>
           </template></v-pagination
         >
-      </div>
+      </div> -->
     </template>
   </v-data-table>
 </template>
 <script setup>
+import VuePagination from "@/common/components/VuePagination.vue";
 import axios from "axios";
 import {
   computed,
@@ -125,6 +134,7 @@ import {
   ref,
   watch,
 } from "vue";
+
 const loading = ref(true); // Loading state
 const processes = ref([]); // List of processes
 const emit = defineEmits("editProcess");
@@ -137,12 +147,20 @@ const filteredItems = computed(() => {
     );
   });
 });
+
+// Pagination state
+const page = ref(1);
+const itemsPerPage = ref(10);
+//const itemsPerPageOptions = [5, 10, 15, 20, 25];
+const totalItems = computed(() => filteredItems.value.length);
+
+/*
 // Pagination state
 const page = ref(1);
 const itemsPerPage = ref(10);
 const itemsPerPageOptions = [5, 10, 15, 20, 25];
 const totalItems = computed(() => filteredItems.value.length);
-
+*/
 /*
 // Computed properties for showing items range
 const startIndex = computed(() => {
@@ -155,11 +173,14 @@ const endIndex = computed(() => {
 });
 */
 
+/*
 const changePage = (value) => {
   console.log(value);
   debugger;
   page.value = value;
 };
+
+*/
 // Event handlers
 const handlePageChange = (newPage) => {
   loading.value = true;
@@ -167,6 +188,11 @@ const handlePageChange = (newPage) => {
   setTimeout(() => {
     loading.value = false;
   }, 200);
+};
+
+// Event handler for items per page change
+const updateItemsPerPage = (newItemsPerPage) => {
+  itemsPerPage.value = newItemsPerPage;
 };
 // Declare props to receive selectedPlant from parent
 const props = defineProps({

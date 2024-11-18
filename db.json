@@ -39,8 +39,8 @@
       "id": "2",
       "sno": 2,
       "process": "Packaging",
-      "description": "The packaging process of final products.",
-      "isActive": true,
+      "description": "The packaging process of final products. Done",
+      "isActive": false,
       "plantId": 1
     },
     {
@@ -832,6 +832,22 @@
       "sno": 1,
       "process": "New PRocess",
       "description": "Added",
+      "isActive": true,
+      "plantId": null
+    },
+    {
+      "id": "2c47",
+      "sno": 1,
+      "process": "Sudhir Process PlantB",
+      "description": "Testasdas",
+      "isActive": true,
+      "plantId": null
+    },
+    {
+      "id": "fed5",
+      "sno": 2,
+      "process": "Harshet PlantB",
+      "description": "Test1",
       "isActive": true,
       "plantId": null
     }
